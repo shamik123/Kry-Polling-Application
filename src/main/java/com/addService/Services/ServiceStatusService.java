@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.addService.Repository.serviceStatusRepository;
 import com.addService.model.ServiceStatus;
@@ -48,6 +49,11 @@ public ServiceStatus deleteByUsrId(String userId) {
 		ServiceStatus srvSts = srvRepository.findByServiceName(srvName);
 		srvRepository.delete(srvSts);
 		return srvSts;
+	}
+	
+	@Transactional
+	public void updateByServiceStatusId(String service, String userId, String url, String status, long id ) {
+	     srvRepository.setServiceStatusById(service, userId, url, status, id);
 	}
 	
 

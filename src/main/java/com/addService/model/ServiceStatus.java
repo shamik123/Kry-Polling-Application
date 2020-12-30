@@ -3,6 +3,7 @@ package com.addService.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,11 +13,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Table(name="ServiceStatus")
 public class ServiceStatus {
 	
+
 	@Id
-	@GeneratedValue
-	@Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id",unique=true,nullable = false)
 	private Long id;
 	
+	@Column(unique=true)
 	private String service;
 	
 	private String userId;
