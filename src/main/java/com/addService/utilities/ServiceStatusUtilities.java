@@ -67,7 +67,7 @@ public class ServiceStatusUtilities {
 	
 	}
 	
-	@Scheduled(fixedRate = 2000000)
+	@Scheduled(fixedRate = 100000)
 	public void updateServiceStatus() {
 		
 		String urlModifier = "/actuator/health";
