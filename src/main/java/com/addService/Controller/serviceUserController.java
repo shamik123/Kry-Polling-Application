@@ -37,7 +37,7 @@ public class serviceUserController {
 	private serviceUserService urlService;
 	
 	@Autowired
-	private ServiceStatusService srvService;
+	private ServiceStatusService srvService;	
 	
 	
 	@GetMapping(value = "/Service")
@@ -55,7 +55,7 @@ public class serviceUserController {
     	
     	
     	if (extUser!=null)
-    		throw new DuplicateRequestException();
+    		throw new DuplicateRequestException("Duplicate Service name");
     
         
 		serviceUser urlDTO = new serviceUser(); 

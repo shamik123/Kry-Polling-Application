@@ -8,13 +8,14 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.addService.Exceptions.DuplicateRequestException;
 
 
 
 @ControllerAdvice
-public class ExceptionHelper {
+public class ExceptionHelper extends ResponseEntityExceptionHandler{
 
 	@ExceptionHandler(value = { ConnectException.class })
 	public ResponseEntity<Object> handleInvalidInputException(ConnectException ex) {
@@ -23,12 +24,13 @@ public class ExceptionHelper {
 	
 	    }
 	
-	@ResponseBody
-	@ResponseStatus(value = HttpStatus.CONFLICT,
-	reason = "Service Name already in use")
+	//@ResponseBody
+	//@ResponseStatus(value = HttpStatus.CONFLICT,
+	//reason = "Service Name already in use")
+	@ExceptionHandler(value = {DuplicateRequestException.class})
     public ResponseEntity<Object> handleDuplicateException(DuplicateRequestException ex) {
 		
-	    return new ResponseEntity<Object>(ex.getMessage(),HttpStatus.BAD_REQUEST);
+	    return new ResponseEntity<Object>(ex.getMessage(),HttpStatus.CONFLICT);
 	
 	    }
 	
