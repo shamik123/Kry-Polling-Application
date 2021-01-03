@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -19,22 +20,22 @@ public class serviceUser {
     @Column(name="id",unique=true,nullable = false)
 	private Long id;
 	
-	@NotEmpty
-	@NotNull(message = "Service url cannot be null")
+
+	@NotBlank(message = "Service url cannot be null")
 	@Column
 	private String url;
 
 	
-	@NotEmpty
-	@NotNull(message = "User ID cannot be null")
+
+	@NotBlank(message = "User ID cannot be null")
 	@Column(name="user_id")
 	private String userId;
 	
 	@Column(name ="status")
 	String status;
 	
-	@NotEmpty
-	@NotNull(message = "Service Name cannot be null")
+	
+	@NotBlank(message = "Service Name cannot be null")
 	@Column(unique=true)
 	String service;
 

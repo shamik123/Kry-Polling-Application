@@ -47,7 +47,7 @@ public class serviceUserController {
 	
 	@PostMapping(value = "/Service")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<serviceUser> create(@Valid @RequestBody serviceUser resource) throws DuplicateRequestException {
+    public ResponseEntity<serviceUser> create(@RequestBody @Valid serviceUser resource) throws DuplicateRequestException {
     	
     	serviceUser extUser = null;
     	
